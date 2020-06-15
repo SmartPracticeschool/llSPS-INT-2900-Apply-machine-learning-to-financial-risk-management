@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html >
+<head>
+<style>
+
+body{
+	background-color: Orange;
+	background-size:cover;
+	background-repeat:no-repeat;
+}
+
+select{
+	border-style:outset;
+	border-color:white;
+	border-width:1px;
+	border-radius:15px;
+	padding: 16px 45px;
+	opacity: 0.6;
+
+}
+
+input[type=text]{
+ 
+	border-style:outset;
+	border-width:1px;
+	border-radius:15px;
+	padding:16px 50px;
+	opacity: 0.6;
+	
+}
+
+
+div.login{
+	text-align:center;
+	font-size:large;
+}
+
+
+.button{
+	border-style:outset;
+	border-color:white;
+	border-radius:20px;
+	padding: 10px 20px;	
+}
+
+h2{
+	font-family: Agency FB;	
+}
+
+
+select:hover,input[type=text]:hover,button:hover,input[type=reset]:hover
+{
+	border-style:inset;
+	border-width:1px;
+	border-radius:15px;
+}
+
+
+</style>
+</head>
+
+<body>
+ <div class='login'>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('y_predict')}}"method="post" >
+	<h2>Financial Risk Prediction</h2>
+	<div>
+		<table align="center" cellpadding="15">
+			<tr>
+				<td>
+				<input type="text" name="age" placeholder="Enter Your Age" required="required"/>
+				</td>
+	
+				<td>
+				<div><select name="gender" required="required">
+					<option value="">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Gender &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</option>
+					<option value=1>Male</option>
+					<option value=0>Female</option>
+				</div>
+				</td>
+				</tr>
+	
+	
+			<tr>
+				<td>
+				<select name="job"  required="required"/>
+					<option value="">&nbsp Select your Job type &nbsp&nbsp</option>
+					<option value=0>Unskilled and Non-Resident</option>
+					<option value=1>Unskilled and Resident</option>
+					<option value=2>Skilled</option>
+					<option value=3>Highly Skilled</option>
+					
+				</select>
+				</td>		
+				<td>
+				<select name="house" required="required">
+					<option value="">  Select your Housing type  </option>
+					<option value=2>Owned</option>
+					<option value=3>Rented</option>
+					<option value=4>Free</option>
+				</select>
+				</td>
+			</tr>
+
+	
+			<tr>	
+				<td>
+				<select name="saving account" required="required" >
+					<option value=""> Savings account Funds </option>
+					<option value=5>little</option>
+					<option value=6>moderate</option>
+					<option value=7>quite rich</option>
+					<option value=8>rich</option>
+				</select>
+				</td>
+				<td>
+				<select name="checking account" required="required">
+					<option value=""> Checking account Funds </option>
+					<option value=9>little</option>
+					<option value=10>moderate</option>
+					<option value=11>rich</option>
+				</select>
+				</td>		
+			</tr>
+		
+			<tr>
+				<td>
+				<input type="text" name="credit amount" placeholder="Credit amount" required="required"/>
+				</td>
+	
+				<td>
+				<input type="text" name="duration" placeholder="Duration of Credit (in months)" required="required"/>
+				</td>
+			</tr>
+	
+			<tr>
+				<td colspan="2">
+				<select name="purpose" required="required">
+					<option value="">Purpose of credit </option>
+					<option value=12>Radio/tv</option>
+					<option value=13>Education</option>
+					<option value=14>Furniture/equipment</option>
+					<option value=15>Car</option>
+					<option value=16>Business</option>
+					<option value=17>Domestic appliances</option>
+					<option value=18>Repairs</option>
+					<option value=19>Vacation or others</option>
+				</select>
+				</td>
+			</tr>
+	
+			<tr>
+				<td colspan=2>
+				<button type="submit"class="button"><b>Predict The Risk</b></button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="reset" class="button"><b>Reset</b></button>
+				</td>
+			</tr>
+	
+		</table>
+	</div>
+	<br><br><br><br>
+   {{ prediction_text }}
+
+ </div>
+<! –– and the comment closes with ––> 
+
+</body>
+</html>
